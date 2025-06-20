@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Caleb Müsfeldt</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 120px; /* Space for footer */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-top: 2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            width: 90%;
+            max-width: 600px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1rem;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            body {
+                padding-bottom: 180px; /* More space for footer on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact</h1>
+            <p> Email: calebmusfeldt at gmail dot com</p>
+            <p> Instagram: at calebmusfeldt</p>
+    </div>
+
+    <div class="footer">
+        <button onclick="window.location.href='index.html'" class="menu-item">Home</button>
+        <button onclick="window.location.href='about.html'" class="menu-item">About</button>
+        <button onclick="window.location.href='research.html'" class="menu-item">Research</button>
+        <button onclick="window.location.href='art.html'" class="menu-item">Art</button>
+        <a href="https://github.com/CalebMus" target="_blank" class="menu-item">GitHub</a>
+    </div>
+
+</body>
+</html>

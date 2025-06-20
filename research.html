@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 120px; /* Space for footer */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-top: 2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            width: 90%;
+            max-width: 600px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1rem;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            body {
+                padding-bottom: 180px; /* More space for footer on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Research</h1>
+            <p>
+                I am currently working in the Cognitive Data Science Lab under Dr. Derek Powell where my research focuses on understanding and improving the reasoning processes of large language models (LLMs) by examining representations and taxonomic relationships. I leverage techniques like model editing to assess how interventions, such as injecting counterfactual data or manipulating logits, influence a model's performance and interpretability. More broadly, my research interests lie at the intersection of cognitive science, computational neuroscience, and artificial intelligence (AI). I aim to understand how the brain gives rise to metacognition capabilities and use this understanding to advance AI’s capabilities. I am pursuing projects in intuitive physics, causal learning, vision systems, and LLMs.
+            </p>
+        <section>
+            <h2>Papers</h2>
+            <div class="paper">
+                <h3>Development of a Python-Based Software for Calculating the Jones Polynomial: Insights into the Behavior of Polymers and Biopolymers</h3>
+                <p>Honors Thesis</p>
+                <p>Director: Dr. Eleni Panagiotou | Committee Member: Dr. Andrea Richa</p>
+                <p><a href="https://arxiv.org/abs/2410.22652" target="_blank">arXiv:2410.22652</a></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Presentations</h2>
+            <div class="presentation">
+                <h3>PTSD severity predicts improvements in psychological functioning after MDMA-assisted therapy</h3>
+                <p>Lifshitz, D., Balducci, J., Musfeldt, C., et al. (2024)</p>
+                <p> 2024 Arizona Psychology Undergraduate Research Conference, Tempe, AZ </p>
+                <p class="award">Award: Most Interdisciplinary Research</p>
+            </div>
+
+            <div class="presentation">
+                <h3>The "High" road to drug education through social media</h3>
+                <p>Delight, C., Semple, M. G., Algibez Flores, B., et al. (2024)</p>
+                <p> 2024 Arizona Psychology Undergraduate Research Conference, Tempe, AZ </p>
+                <p class="award">Award: Second Prize - Biology and Social Issues Category</p>
+                <p class="award">Award: Poster Title Award</p>
+            </div>
+
+            <div class="presentation">
+                <h3>PTSD severity predicts improvements in self-compassion scores following MDMA-assisted therapy</h3>
+                <p>Gupta, L., Semple, M. G., Algibez Flores, B., et al. (2024)</p>
+                <p> 2024 Arizona Psychology Undergraduate Research Conference, Tempe, AZ </p>
+                <p class="award">Award: Third Prize - Neuroscience Category</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="footer">
+        <button onclick="window.location.href='index.html'" class="menu-item">Home</button>
+        <button onclick="window.location.href='about.html'" class="menu-item">About</button>
+        <button onclick="window.location.href='art.html'" class="menu-item">Art</button>
+        <a href="https://github.com/CalebMus" target="_blank" class="menu-item">GitHub</a>
+        <button onclick="window.location.href='contact.html'" class="menu-item">Contact</button>
+    </div>
+
+</body>
+</html>

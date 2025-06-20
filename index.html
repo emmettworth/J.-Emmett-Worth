@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caleb Müsfeldt</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .section {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dot-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .name-container {
+            position: relative;
+            text-align: center;
+            z-index: 3;
+            mix-blend-mode: difference;
+            transform: translateY(-5vh);
+        }
+
+        .first-name {
+            font-size: 25vw;
+            line-height: 1;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2vh;
+        }
+
+        .last-name {
+            font-size: 15vw;
+            line-height: 1.1;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .letter {
+            display: inline-block;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            width: 90%;
+            max-width: 600px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1rem;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="dot-canvas" id="dotCanvas"></canvas>
+    
+    <section class="section">
+        <div class="name-container">
+            <div class="first-name">
+                <span class="letter">C</span>
+                <span class="letter">A</span>
+                <span class="letter">L</span>
+                <span class="letter">E</span>
+                <span class="letter">B</span>
+            </div>
+            <div class="last-name">
+                <span class="letter">M</span>
+                <span class="letter">Ü</span>
+                <span class="letter">S</span>
+                <span class="letter">F</span>
+                <span class="letter">E</span>
+                <span class="letter">L</span>
+                <span class="letter">D</span>
+                <span class="letter">T</span>
+            </div>
+        </div>
+        <div class="footer">
+            <button onclick="window.location.href='about.html'" class="menu-item">About</button>
+            <button onclick="window.location.href='research.html'" class="menu-item">Research</button>
+            <button onclick="window.location.href='art.html'" class="menu-item">Art</button>
+            <a href="https://github.com/CalebMus" target="_blank" class="menu-item">GitHub</a>
+            <button onclick="window.location.href='contact.html'" class="menu-item">Contact</button>
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('dotCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            let time = 0;
+            let dots = [];
+            let animationFrameId;
+            const DOT_RADIUS = 3;
+            const DOT_SPACING = 10;
+            const FLOW_SPEED = 0.01;
+            const FLOW_SCALE = 0.025;
+
+            class Dot {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.originalX = x;
+                    this.originalY = y;
+                    this.size = DOT_RADIUS;
+                }
+
+                update(time) {
+                    const noiseX = Math.sin(this.originalX * FLOW_SCALE + time * FLOW_SPEED) * 
+                                 Math.cos(this.originalY * FLOW_SCALE + time * FLOW_SPEED * 0.5) * 8;
+                    const noiseY = Math.cos(this.originalX * FLOW_SCALE + time * FLOW_SPEED * 0.7) * 
+                                 Math.sin(this.originalY * FLOW_SCALE + time * FLOW_SPEED) * 8;
+
+                    this.x = this.originalX + noiseX;
+                    this.y = this.originalY + noiseY;
+
+                    const intensity = (Math.sin(this.x * FLOW_SCALE + time * FLOW_SPEED) + 
+                                    Math.cos(this.y * FLOW_SCALE + time * FLOW_SPEED)) * 0.5;
+                    
+                    this.size = DOT_RADIUS * (1 + intensity * 0.5);
+                }
+
+                draw(ctx) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function initDots() {
+                dots = [];
+                for(let x = 0; x < canvas.width; x += DOT_SPACING) {
+                    for(let y = 0; y < canvas.height; y += DOT_SPACING) {
+                        dots.push(new Dot(x, y));
+                    }
+                }
+            }
+
+            function resizeCanvas() {
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                }
+                
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                
+                initDots();
+                animate();
+            }
+
+            function animate() {
+                ctx.fillStyle = '#000';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#fff';
+                time += 1;
+
+                dots.forEach(dot => {
+                    dot.update(time);
+                    dot.draw(ctx);
+                });
+
+                animationFrameId = requestAnimationFrame(animate);
+            }
+
+            resizeCanvas();
+            
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(resizeCanvas, 250);
+            });
+        });
+    </script>
+</body>
+</html>
